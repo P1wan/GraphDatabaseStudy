@@ -1,2 +1,4 @@
-dataGaia.csv
-kepler_stellar_17.csv
+*.csv
+*.fits
+*.gz
+*.zip
