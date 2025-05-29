@@ -7,9 +7,9 @@
 ## 1. Descrição e Características do Paradigma Graph Store
 
 ### 1.1 O que é um Banco de Dados em Grafo?
-- é um tipo de banco de dados NoSQL (Not Only SQL) 
+- um tipo de banco de dados NoSQL (Not Only SQL)
 	- ***NÃO*** organiza dados em tabelas com linhas e colunas e 
-	- pra conetar informações, ***NÃO*** depende de chaves estrangeiras e operações de JOIN
+	- pra conectar informações, ***NÃO*** depende de chaves estrangeiras e operações de JOIN
 - para dados cujas conexões/relacionamentos ***são tão importantes quanto os próprios dados!!!***
 - estrutura mais intuitiva e flexível 
 	- teoria dos grafos.
@@ -18,51 +18,45 @@ A estrutura fundamental de um banco de dados em grafo consiste em:
 
 *   **Nós (Nodes):** 
 	* Entidades/objetos do domínio 
-	* ex: 
+	* exemplos: 
 		* Pessoas
 		* Empresas
 		* Produtos
 		* Contas
-*  **Relacionamentos:** 
-	* Conexões/Associações entre os nós
-	* (Arestas)
-	* ex: 
+*  **Relacionamentos (Arestas):** 
+	* Conexões entre os nós
+	* são direcionais
+	* possuem um tipo, o qual descreve a natureza da conexão
+	* exemplos:
 		* AMIGO_DE
 		* TRABALHA_EM
 		* COMPROU
 		* TRANSFERIU_PARA
-	* têm sempre:
-		* uma direção
-			* Nó de origem -> Nó de destino
-		* um tipo
-			* descreve a natureza da conexão
 
 
 
 ### 1.2 Principais Tipos de Aplicações desse paradigma
-- São especialmente adequados em casos onde os relacionamentos/conexões são **cruciais** para análise e tomada de decisão.
+- São especialmente adequados quando as conexões são **cruciais** para análise e tomada de decisão.
 
 Exemplos:
-*   **Redes Sociais:** 
-	* Mapear conexões entre usuários (amizades, seguidores, grupos), 
-	* analisar influência, 
+*   **Redes Sociais:**
+	* Mapear conexões entre usuários (amizades, seguidores, grupos...), 
+	* analisar influência,
 	* sugerir conexões.
 *   **Sistemas de Recomendação:** 
 	* Recomendar produtos/conteúdos/serviços 
-	* com base nas 
-		* conexões entre usuários, 
-		* itens e 
-		* preferências 
-	* ex:
+	* com base em conexões entre usuários, preferências, etc
+	* exemplos:
 		* "clientes que compraram X também compraram Y"
-		* "amigos que gostaram de Z"
+		* "seus amigos gostaram de Z"
+
 * **Detecção de Fraudes:** 
-	* Identificar padrões suspeitos em 
+	* Identificar padrões suspeitos em
 		* transações financeiras, 
 		* seguros ou 
 		* telecomunicações, 
-	* analisando conexões entre:
-		* contas, dispositivos e atividades.
+	* analisando conexões entre contas, dispositivos e atividades.
+
 *   **Gerenciamento de Redes e Infraestrutura:** 
 	* Modelar redes de 
 		* computadores, 
@@ -71,26 +65,34 @@ Exemplos:
 	* analisar dependências, 
 	* identificar pontos de falha
 	* otimizar rotas.
+
 *   **Análise de Impacto e Dependências:**
 	* Em uma cadeia de suprimentos, entender como estão conectados: componentes de software, processos de negócios ou elementos de uma cadeia de suprimentos estão interconectados
 	* e qual o impacto de mudanças.
+
 * **Gerenciamento de Conhecimento:**
 	* Organizar e conectar informações complexas, como em bases de conhecimento, catálogos de metadados ou pesquisas científicas.
 
 ## 2. Visão Geral do Neo4j
 
-### 2.1 História e Evolução
+### 2.1 História e Evolução do Neo4j
 
-Neo4j é um dos SGBDs em grafo mais populares e maduros do mercado. Desenvolvido pela Neo4j, Inc. (originalmente Neo Technology), teve seu início em 2000 e a primeira versão pública foi lançada em 2007. Foi pioneiro na implementação do modelo de grafo de propriedades e na criação da linguagem de consulta Cypher. Ao longo dos anos, evoluiu significativamente, incorporando recursos de escalabilidade, alta disponibilidade e ferramentas de desenvolvimento e visualização, consolidando-se como líder no quadrante mágico do Gartner para bancos de dados em grafo.
++ Um dos SGBDs em grafo mais populares e maduros do mercado.
++ da Neo4j, Inc. (originalmente Neo Technology)
++ início (ainda não aberto ao publico): 2000
++ primeira versão pública: 2007.
++ pioneiro na implementação do modelo de grafo de propriedades e na criação da linguagem de consulta Cypher.
+
+Ao longo dos anos, evoluiu significativamente, incorporando recursos de escalabilidade, alta disponibilidade e ferramentas de desenvolvimento e visualização, consolidando-se como líder no quadrante mágico do Gartner para bancos de dados em grafo.
 
 ### 2.2 Conceitos Fundamentais
 
 O Neo4j implementa o **Property Graph Model**, que inclui os seguintes elementos:
 
-*   **Nós (Nodes):** As entidades básicas. Podem ter zero ou mais **Labels** (rótulos) que os classificam (ex: `:Person`, `:Movie`, `:Product`). Um nó pode ter múltiplos labels (ex: `:Person:Actor`).
-*   **Relacionamentos (Relationships):** Conexões direcionadas entre dois nós (um nó pode ter um relacionamento consigo mesmo). Cada relacionamento tem exatamente um **Tipo** (ex: `:ACTED_IN`, `:DIRECTED`, `:FRIENDS_WITH`).
-*   **Propriedades (Properties):** Pares chave-valor armazenados em nós e relacionamentos para guardar dados específicos (ex: `name: "Tom Hanks"`, `born: 1956`, `roles: ["Forrest"]`).
-*   **Traversals e Paths:** A navegação através dos relacionamentos para encontrar nós conectados é chamada de traversal. Uma sequência de nós e relacionamentos conectados forma um *path* (caminho).
++   **Nós (Nodes):** As entidades básicas. Podem ter zero ou mais **Labels** (rótulos) que os classificam (ex: `:Person`, `:Movie`, `:Product`). Um nó pode ter múltiplos labels (ex: `:Person:Actor`).
++   **Relacionamentos (Relationships):** Conexões direcionadas entre dois nós (um nó pode ter um relacionamento consigo mesmo). Cada relacionamento tem exatamente um **Tipo** (ex: `:ACTED_IN`, `:DIRECTED`, `:FRIENDS_WITH`).
++   **Propriedades (Properties):** Pares chave-valor armazenados em nós e relacionamentos para guardar dados específicos (ex: `name: "Tom Hanks"`, `born: 1956`, `roles: ["Forrest"]`).
++   **Traversals e Paths:** A navegação através dos relacionamentos para encontrar nós conectados é chamada de traversal. Uma sequência de nós e relacionamentos conectados forma um *path* (caminho).
 
 ### 2.3 Linguagem de Consulta Cypher
 
