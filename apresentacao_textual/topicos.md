@@ -1,3 +1,0 @@
-
-- guia de estudos
-	- 
