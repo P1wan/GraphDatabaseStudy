@@ -6,20 +6,19 @@ Neo4j é o SGBD pioneiro e um dos principais no mercado para o uso do paradigma 
 
 
 # 3. Arquitetura do SGBD Neo4j
-O núcleo é ACID e persiste dados em um formato de armazenamento próprio para grafos. Um planejador Cypher otimiza consultas que o *kernel* executa apoiado em múltiplos níveis de cache. Na Enterprise, instâncias formam *Causal Clusters*: nós Core (consenso Raft) e *Read Replicas* que recebem *streaming* assíncrono, oferecendo leitura massivamente paralela. A versão 2025 passou a exigir Java 21 e traz melhorias no tempo de plano paralelo.
+O núcleo é ACID e persiste dados em um formato de armazenamento próprio para grafos. Um planejador Cypher otimiza consultas que o kernel executa apoiado em múltiplos níveis de cache. Na Enterprise, instâncias formam Causal Clusters: nós Core (consenso Raft) e Read Replicas que recebem *streaming* assíncrono, oferecendo leitura massivamente paralela. A versão 2025 passou a exigir Java 21 e traz melhorias no tempo de plano paralelo.
 
 
 # 4. Escalabilidade do banco e suas características
-Neo4j escala verticalmente com muita RAM (grau alto de *in-memory* caching) e, desde a versão 5, horizontalmente via Causal Clustering. A Enterprise 2025 acrescentou *sharding* automático (“Fabric 2.0”), permitindo distribuir partes do grafo por nós diferentes e prometendo “escalabilidade ilimitada” de leitura e escrita, além de replicação contínua para alta disponibilidade.&#x20;
+Neo4j escala verticalmente com muita RAM (grau alto de *in-memory* caching) e, desde a versão 5, horizontalmente via Causal Clustering. A Enterprise 2025 acrescentou *sharding* automático (“Fabric 2.0”), permitindo distribuir partes do grafo por nós diferentes e prometendo “escalabilidade ilimitada” de leitura e escrita, além de replicação contínua para alta disponibilidade.
 
 
 # 5. Aplicações reais que usam o SGBD no mercado
-Organizações como NASA, eBay, UBS, Cisco, Airbus e Walmart usam Neo4j para recomendação em tempo real, detecção de anéis de fraude, mapeamento de redes de telecom, análise de impacto em cadeias de suprimento e descoberta de medicamentos, comprovando robustez em cenários produtivos de grande escala.&#x20;
+Organizações como NASA, eBay, UBS, Cisco, Airbus e Walmart usam Neo4j para recomendação em tempo real, detecção de anéis de fraude, mapeamento de redes de telecomunicação, análise de impacto em cadeias de suprimento e descoberta de medicamentos. Isso mostra como Neo4j está bem estabelecido no mercado e é considerado robusto em cenários produtivos de grande escala.
 
 
 # 6. Endereço do Provedor (se on-line) / Local para download, Forma de licenciamento (Licença pessoal, livre, etc)
-O provedor é a Neo4j Inc. (neo4j.com). Downloads para Windows, macOS, Linux e Docker ficam em *neo4j.com/download*; imagens cloud estão em Marketplaces AWS/Azure e o SaaS fica em AuraDB. Community Edition é GPL v3 e gratuita; Enterprise requer assinatura ou *pay-as-you-go* na nuvem; o código-fonte central continua aberto.
-
+O provedor é a Neo4j Inc. Como plano gratuito, há a *Community Edition*, a qual é licenciada como GPL v3, ou seja, o código-fonte central é aberto. A versão paga (*Enterprise*) oferece maior uso da núvem.
 
 
 # 7Principais vantagens (pontos fortes - motivo para usar)
